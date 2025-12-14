@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-MEANS | Detección de Fraudes</title>
+    
+    <link rel="stylesheet" href="{% static 'fraud_detection_api/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Análisis K-MEANS para Detección de Fraude Bancario</h1>
+
+        <div class="card" id="input-container">
+            <h2>Configuración del Análisis</h2>
+            <form id="upload-form">
+                <label for="csv_file">Seleccionar Archivo CSV</label>
+                <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+
+                <label for="n_clusters">Número de Clusters</label>
+                <input type="number" id="n_clusters" name="n_clusters" value="5" min="2" max="15" required>
+
+                <button type="submit" id="submit-btn">Ejecutar Análisis</button>
+            </form>
+            <div id="status" class="status-message"></div>
+        </div>
+
+        <div class="card results-container" id="results-container" style="display: none;">
+            <h2> Resultados y Evaluación</h2>
+            
+            <div id="graph-section">
+                <h3>Visualización del Clustering (V10 vs V14)</h3>
+                <div class="graph-box">
+                    <img id="clustering-graph" src="" alt="Gráfica de K-Means" style="width: 100%; height: auto; display: none;">
+                    <p id="graph-loading-message" style="text-align: center; color: var(--text-muted);">Cargando gráfico...</p>
+                </div>
+            </div>
+            <div class="metrics-grid" id="metrics-output">
+            
+            <div id="summary-section">
+                <h3>Resumen de Clusters</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Cluster</th>
+                            <th>Total Muestras</th>
+                            <th>Muestras Fraudulentas (Class=1)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clusters-table-body">
+                        </tbody>
+                </table>
+            </div>
+
+            <div id="no-labels-warning" style="color: var(--warning); margin-top: 15px; font-weight: 600; display: none;">
+                ⚠️ Nota: No se pudo mostrar el resumen de fraudes ni el Purity Score porque el dataset no contiene la columna 'Class'.
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'fraud_detection_api/script.js' %}"></script>
+</body>
+</html>

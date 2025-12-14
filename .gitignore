@@ -1,0 +1,9 @@
+# Archivos y carpetas de Python
+__pycache__/
+*.pyc
+venv/
+*.env
+
+# Archivos de Django
+db.sqlite3
+/staticfiles/
