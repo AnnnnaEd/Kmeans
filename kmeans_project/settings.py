@@ -135,3 +135,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # 9. CONFIGURACIÓN ADICIONAL PARA WHITENOISE
 # Comprimir los archivos estáticos
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+FORCE_SCRIPT_NAME = "/"
