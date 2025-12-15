@@ -108,6 +108,13 @@ def run_kmeans_analysis(file_path, n_clusters=5):
         df = pd.read_csv(file_path)
     except Exception as e:
         return {"error": f"Error al cargar el CSV: {e}"}
+    
+    # === LÓGICA DE MUESTREO (SAMPLING) PARA EVITAR TIMEOUT EN RENDER ===
+    # El límite de 50,000 transacciones es seguro para el plan gratuito.
+    SAMPLE_LIMIT = 50000 
+    if len(df) > SAMPLE_LIMIT:
+        df = df.sample(n=SAMPLE_LIMIT, random_state=42)
+    # ===================================================================
 
     # Asume que si 'Class' no existe, las métricas de pureza no se pueden calcular
     y = df.get("Class", pd.Series(np.zeros(len(df)), dtype=int)) 

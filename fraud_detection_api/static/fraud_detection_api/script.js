@@ -8,9 +8,7 @@ document.getElementById('upload-form').addEventListener('submit', async function
     const resultsSection = document.getElementById('results-section');
     const submitBtn = document.getElementById('submit-btn');
     
-    // Si estás usando Ngrok (Solución de tunelización):
-    const ngrokDomain = "https://willard-forgeable-lea.ngrok-free.dev"; // Reemplaza con tu dominio ngrok real
-    const apiEndpoint = ngrokDomain + '/api/analyze/'; 
+    const apiEndpoint = '/api/analyze/';
     
 
     // 1. Mostrar estado de carga y deshabilitar botón
